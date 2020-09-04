@@ -1,0 +1,4 @@
+work/
+*.html
+sass/
+css/*.css.map

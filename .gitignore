@@ -1,4 +1,2 @@
-work/
-*.html
-sass/
-css/*.css.map
+.DS_Store
+get_dbconn.php

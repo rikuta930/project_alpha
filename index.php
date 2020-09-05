@@ -54,5 +54,6 @@ echo "<p>LOGIN SUCCEED: " . $email . "</p>\n";
 echo "<p><a href=\"./logout.php\">LOGOUT</a>";
 ?>
 
+<a href="profile.php">プロフィールを編集</a>
 </body>
 </html>

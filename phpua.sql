@@ -5,3 +5,8 @@ create table phpua(
   email text not null,
   password text not null) without oids;
 
+create table user_profile(
+  id serial primary key,
+  uid text not null,
+  profile text not null) without oids;
+)

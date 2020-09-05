@@ -15,7 +15,7 @@
 
 <?php
 require 'get_dbconn.php';
-
+require 'get_sql_insert_profile_statement.php';
 get_dbconn();
 $userid = 1;
 
@@ -25,11 +25,8 @@ $userid = 1;
 if (isset($_POST['profile']) && strlen($_POST['profile']) > 0) {
     $profile = $_POST['profile'];
 }
-
 {
-    $sql = "insert into user_profile(uid, profile)
-  values('" . $userid . "','" . $profile .
-        "');";
+    $sql = get_sql_insert_into_user_profile_statement($userid, $profile);
     $result = pg_query($sql) or die('Query faild: ' . pg_last_error());
 }
 ?>

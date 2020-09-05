@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +9,13 @@
 <body>
   <div class="main-container">
     <h1>サインイン</h1>
-    <div class="sign-form">
-      <label>メールアドレス<input type="text"></label>
-      <label>パスワード<input type="text"></label>
-      <button class="sign-btn">サインイン</button>
-      <a href="#" class="signup">新規登録</a>
+    <div class="sign-regform">
+      <form method="POST" action="./index.php">
+      email:<input type="text" name="email" size="40"><br>
+      pw:<input type="password" name="password" size="40"><br>
+      <input type="submit">
+      </form>
+      <p>*はじめての方は<a href="./regform.html">こちら</a>から登録してください。</p>
     </div>
   </div>
 </body>

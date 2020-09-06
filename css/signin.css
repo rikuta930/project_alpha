@@ -19,8 +19,8 @@
 
 .header__icon {
   position: absolute;
+  width: 50px;
   left: 5px;
-  color: #3C3C3C;
 }
 
 .header__title {

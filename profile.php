@@ -65,8 +65,8 @@ if ($posted_gender == True) {
   <div class="main-container">
     <h1>プロフィール編集</h1>
     <img src="image/profile.png" alt="" width="50" height="50">
-    <p>MailAdress:abcdefg@bbbbb.com</p>
-    <p>ID:a</p>
+    <p>MailAdress:<?php echo $email; ?> </p>
+    <p>ID:<?php echo $user_id;?></p>
     <div class="form">
       <form method="POST" action="#">
       <label>名前

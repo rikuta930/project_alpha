@@ -43,6 +43,13 @@ if (isset($email) && isset($password)) {
                 $profile = $row[2];
             }
 
+            ######### タイムライン
+            $sql = "SELECT * FROM user_profile WHERE uid = '". $_SESSION['uid'] ."';";
+            $result = pg_query($sql) or die('Query failed: ' . pg_last_error());
+            if (pg_num_rows($result) == 1) {
+                $row = pg_fetch_row($result);
+            }
+
             $aflag = 1;
         }
     }
@@ -99,6 +106,8 @@ if ($aflag == 0) {
   </button>
   <p id="count">15</p>
   <hr>
+
+
   </div>
     <a href="timeline.php">
       <img src="icon/timeline.png" alt="">

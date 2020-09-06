@@ -9,4 +9,11 @@ create table user_profile(
   id serial primary key,
   uid text not null,
   profile text not null) without oids;
-)
+
+
+create table murmur(
+  id serial primary key,
+  uid text not null,
+  gender text not null,
+  age text not null,
+  freeword text not null) without oids;

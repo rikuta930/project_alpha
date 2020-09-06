@@ -1,150 +1,191 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="ja">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Live input record and playback</title>
-  <style type='text/css'>
-    ul { list-style: none; }
-    #recordingslist audio { display: block; margin-bottom: 10px; }
-  </style>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Form</title>
+    <link rel="stylesheet" href="../css/reboot.min.css">
+    <link rel="stylesheet" href="../css/form.css">
 </head>
 <body>
+<header class="header">
+    <img src="../icon/logo.png" class="header__icon">
+    <div class="header__title">サービス名</div>
+</header>
+<div class="main-container">
+    <h2>つぶやき</h2>
+    <div class="rec">
+        <div class="rec__start">
+            <img src="../icon/talking.png" class="rec__start__icon">
+<!--            <button class="rec__start__btn">録音</button>-->
+            <button onclick="startRecording(this);">録音</button>
+            <button onclick="stopRecording(this);" disabled>停止</button>
+        </div>
+        <div class="rec__stop">
+            <img src="../icon/not_talking.png" class="rec__stop__icon">
+<!--            <button class="rec__stop__btn">停止</button>-->
+        </div>
+    </div>
+    <ul id="recordingslist"></ul>
+    <h2>ハッシュタグ</h2>
+    <form action="" class="form">
+        <select class="form__info"　name="gender">
+            <option value="">年代</option>
+            <option value="10">10代</option>
+            <option value="20">20代</option>
+            <option value="30">30代</option>
+            <option value="40">40代</option>
+            <option value="50">50代</option>
+            <option value="60">60代</option>
+            <option value="70">70代</option>
+            <option value="80">80代</option>
+            <option value="90">90代</option>
+        </select><br>
+        <select class="form__info"　name="gender">
+            <option value="">性別</option>
+            <option value="boy">男性</option>
+            <option value="girl">女性</option>
+            <option value="others">その他</option>
+            <option value="secret">無回答</option>
+        </select><br>
+        <label for="free-word">フリーワード(任意)</label>
+        <textarea
+                id="free-word"
+                class="form__info"
+                cols="40"
+                rows="8"
+                placeholder="#嬉しい"
+        ></textarea><br />
+        <div class="form__btn-wrapper">
+            <button class="form__btn">公開</button>
+        </div>
+    </form>
+    <a href="#"><img src="../icon/arrow.png" class="btn-arrow"></a>
+</div>
 
-  <h1>Recorder.js simple WAV export example</h1>
 
-  <p>Make sure you are using a recent version of Google Chrome.</p>
-  <p>Also before you enable microphone input either plug in headphones or turn the volume down if you want to avoid ear splitting feedback!</p>
-
-  <button onclick="startRecording(this);">record</button>
-  <button onclick="stopRecording(this);" disabled>stop</button>
-
-  <h2>Recordings</h2>
-  <ul id="recordingslist"></ul>
-
-  <h2>Log</h2>
-  <pre id="log"></pre>
+<h2>Log</h2>
+<pre id="log"></pre>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script>
-  function __log(e, data) {
-    log.innerHTML += "\n" + e + " " + (data || '');
-  }
+<script>
+    function __log(e, data) {
+        log.innerHTML += "\n" + e + " " + (data || '');
+    }
 
-  var audio_context;
-  var recorder;
+    var audio_context;
+    var recorder;
 
-  function startUserMedia(stream) {
-    var input = audio_context.createMediaStreamSource(stream);
-    audio_context.resume();
-    __log('Media stream created.');
+    function startUserMedia(stream) {
+        var input = audio_context.createMediaStreamSource(stream);
+        audio_context.resume();
+        __log('Media stream created.');
 
-    // Uncomment if you want the audio to feedback directly
-    //input.connect(audio_context.destination);
-    //__log('Input connected to audio context destination.');
+        // Uncomment if you want the audio to feedback directly
+        //input.connect(audio_context.destination);
+        //__log('Input connected to audio context destination.');
 
-    recorder = new Recorder(input);
-    __log('Recorder initialised.');
-  }
+        recorder = new Recorder(input);
+        __log('Recorder initialised.');
+    }
 
-  function startRecording(button) {
-    recorder && recorder.record();
-    button.disabled = true;
-    button.nextElementSibling.disabled = false;
-    __log('Recording...');
-  }
+    function startRecording(button) {
+        recorder && recorder.record();
+        button.disabled = true;
+        button.nextElementSibling.disabled = false;
+        __log('Recording...');
+    }
 
-  function stopRecording(button) {
-    recorder && recorder.stop();
-    button.disabled = true;
-    button.previousElementSibling.disabled = false;
-    __log('Stopped recording.');
+    function stopRecording(button) {
+        recorder && recorder.stop();
+        button.disabled = true;
+        button.previousElementSibling.disabled = false;
+        __log('Stopped recording.');
 
-    // create WAV download link using audio data blob
-    createDownloadLink();
+        // create WAV download link using audio data blob
+        createDownloadLink();
 
-    recorder.clear();
-  }
-
-
+        recorder.clear();
+    }
 
 
-  function createDownloadLink() {
-    recorder && recorder.exportWAV(function(blob) {
-      var url = URL.createObjectURL(blob);
-      var li = document.createElement('li');
-      var au = document.createElement('audio');
-      var hf = document.createElement('a');
+    function createDownloadLink() {
+        recorder && recorder.exportWAV(function (blob) {
+            var url = URL.createObjectURL(blob);
+            var li = document.createElement('li');
+            var au = document.createElement('audio');
+            var hf = document.createElement('a');
 
-      au.controls = true;
-      au.src = url;
-      hf.href = url;
-      hf.download = new Date().toISOString() + '.wav';
-      hf.innerHTML = hf.download;
-      li.appendChild(au);
-      li.appendChild(hf);
-      recordingslist.appendChild(li);
+            au.controls = true;
+            au.src = url;
+            hf.href = url;
+            hf.download = new Date().toISOString() + '.wav';
+            hf.innerHTML = hf.download;
+            li.appendChild(au);
+            li.appendChild(hf);
+            recordingslist.appendChild(li);
 
-      var data = new FormData();
-      data.append('fname','test.wav')
-      data.append('sound', blob,'j.wav');
+            var random = Math.round( Math.random()*10000 );
+            var data = new FormData();
+            data.append('fname', random)
+            data.append('sound', blob, 'j.wav');
 
-      $.ajax({
-        url :  "./upload.php",
-        type: 'POST',
-        data: data,
-        contentType: false,
-        processData: false
-      }).done(function(data) {
-        console.log(data);
-      });
-      });
+            $.ajax({
+                url: "./upload.php",
+                type: 'POST',
+                data: data,
+                contentType: false,
+                processData: false
+            }).done(function (data) {
+                console.log(data);
+            });
+        });
 
     };
 
 
-  window.onload = function init() {
-    try {
-      // webkit shim
-      window.AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (navigator.mediaDevices === undefined) {
-        navigator.mediaDevices = {};
-      }
-      if (navigator.mediaDevices.getUserMedia === undefined) {
-        navigator.mediaDevices.getUserMedia = function(constraints) {
-          // First get ahold of the legacy getUserMedia, if present
-          let getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    window.onload = function init() {
+        try {
+            // webkit shim
+            window.AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (navigator.mediaDevices === undefined) {
+                navigator.mediaDevices = {};
+            }
+            if (navigator.mediaDevices.getUserMedia === undefined) {
+                navigator.mediaDevices.getUserMedia = function (constraints) {
+                    // First get ahold of the legacy getUserMedia, if present
+                    let getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-          // Some browsers just don't implement it - return a rejected promise with an error
-          // to keep a consistent interface
-          if (!getUserMedia) {
-            return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
-          }
+                    // Some browsers just don't implement it - return a rejected promise with an error
+                    // to keep a consistent interface
+                    if (!getUserMedia) {
+                        return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+                    }
 
-          // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
-          return new Promise(function(resolve, reject) {
-            getUserMedia.call(navigator, constraints, resolve, reject);
-          });
+                    // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
+                    return new Promise(function (resolve, reject) {
+                        getUserMedia.call(navigator, constraints, resolve, reject);
+                    });
+                }
+            }
+            window.URL = window.URL || window.webkitURL;
+
+            audio_context = new AudioContext;
+            __log('Audio context set up.');
+            __log('navigator.mediaDevices ' + (navigator.mediaDevices.length != 0 ? 'available.' : 'not present!'));
+        } catch (e) {
+            alert('No web audio support in this browser!');
         }
-      }
-      window.URL = window.URL || window.webkitURL;
 
-      audio_context = new AudioContext;
-      __log('Audio context set up.');
-      __log('navigator.mediaDevices ' + (navigator.mediaDevices.length != 0 ? 'available.' : 'not present!'));
-    } catch (e) {
-      alert('No web audio support in this browser!');
-    }
+        navigator.mediaDevices.getUserMedia({audio: true})
+            .then(function (stream) {
+                startUserMedia(stream);
+            })
+            .catch(function (e) {
+                __log('No live audio input: ' + e);
+            });
+    };
+</script>
 
-    navigator.mediaDevices.getUserMedia({audio: true})
-      .then(function(stream) {
-        startUserMedia(stream);
-      })
-      .catch(function(e) {
-        __log('No live audio input: ' + e);
-    });
-  };
-  </script>
-
-  <script src="./js/recorder.js"></script>
+<script src="./js/recorder.js"></script>
 </body>
 </html>

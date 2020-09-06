@@ -16,17 +16,14 @@ if (isset($_SESSION['password'])) {
 
 if (isset($_POST['user_name']) && strlen($_POST['user_name']) > 0) {
     $posted_user_name = $_POST['user_name'];
-    echo $posted_user_name;
 }
 
 if (isset($_POST['gender']) && strlen($_POST['gender']) > 0) {
     $posted_gender = $_POST['gender'];
-    echo $posted_gender;
 }
 
 if (isset($_POST['profile']) && strlen($_POST['profile']) > 0) {
     $profile = $_POST['profile'];
-    echo $profile;
 }
 
 $sql_for_user_information = get_sql_select_statement($email);

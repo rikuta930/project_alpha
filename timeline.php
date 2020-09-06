@@ -6,10 +6,11 @@
   <title>timeline</title>
   <link rel="stylesheet" href="css/reboot.min.css">
   <link rel="stylesheet" href="css/timeline.css">
+  <link rel="stylesheet" href="css/button.css">
 </head>
 <body>
   <header class="header">
-    <div class="header__icon"><img src="icon/logo.png" class="header__icon"></div>
+    <div class="header__icon"><img src="icon/logo.png" class="header__icon" width="50" height="50"></div>
     <div class="header__title">サービス名</div>
     <div class="header__search"><img src="icon/search.png" class="header__search" width="20" height="20"></div>
   </header>
@@ -37,17 +38,11 @@
     <p style="display:inline;" id="count">15</p>
   </div>
   <hr>
-  <div class="donut">
-    <a href="#blueLink" class="right">
-    </a> <br>
-    <a href="#RedLink" class="left">
-    </a>
-  </div>
-    <a href="timeline.php">
-      <img src="icon/timeline.png" alt="">
-    </a>
-    <a href="form.php">
-      <img src="icon/mic.png" alt="" >
-    </a>
+  <a href="timeline.php" class="btn btn--orange btn--circle btn--circle-a btn--shadow left">
+    <img src="icon/timeline.png" alt="" width="40" height="40">
+  </a>
+  <a href="form.php" class="btn btn--orange btn--circle btn--circle-a btn--shadow right">
+    <img src="icon/mic.png" alt="" width="30" height="50">
+  </a>
 </body>
 </html>

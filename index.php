@@ -33,6 +33,16 @@ if (isset($email) && isset($password)) {
             ###### 写真
             $profile_pic = "icon/" . $_SESSION['gender'] . ".png";
 
+
+            ###### プロフィール
+            $sql = "SELECT * FROM user_profile WHERE uid = '". $_SESSION['uid'] ."';";
+            $result = pg_query($sql) or die('Query faild: ' .pg_last_error());
+
+            if (pg_num_rows($result) == 1) {
+                $row = pg_fetch_row($result);
+                $profile = $row[2];
+            }
+
             $aflag = 1;
         }
     }
@@ -64,14 +74,14 @@ if ($aflag == 0) {
    </div>
   <h2><?php echo $_SESSION['user_name']?></h2>
   <p id="id">ID:<?php echo $_SESSION['uid'];?></p>
-  <p id="profile">自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介</p>
-  <button type="button" name="edit" onclick="profile.php">プロフィール編集</button>
+  <p id="profile"><?php echo $profile;?></p>
+  <button type="button" name="edit" onclick="location.href='profile.php'">プロフィール編集</button>
 </div>
 <hr>
 
   <div class="secound-container">
     <img src="<?php echo $profile_pic;?>" alt="" width="50" height="50">
-    <p>Hana</p>
+    <p><?php echo $_SESSION['user_name'];?></p>
     <br>
   <audio controls>
      <source src="#" type="audio/mp3">

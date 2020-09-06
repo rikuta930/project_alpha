@@ -39,8 +39,17 @@ if (pg_num_rows($user_information) == 1) {
     $gender = $row[2];
 }
 
-$sql = get_sql_insert_into_user_profile_statement($user_id, $profile);
-$user_information = pg_query($sql) or die('Query faild: ' . pg_last_error());
+##自己紹介がなかったら､追加し､ 自己紹介があったら変更する｡
+    $sql = "SELECT * FROM user_profile WHERE uid = '". $user_id ."';";
+    $result = pg_query($sql) or die('Query faild: ' .pg_last_error());
+
+if (pg_num_rows($result) !== 1){
+    $sql = get_sql_insert_into_user_profile_statement($user_id, $profile);
+    $user_information = pg_query($sql) or die('Query faild: ' . pg_last_error());
+} else {
+    $sql = "UPDATE user_profile SET profile = '". $profile ."' WHERE uid = '". $user_id ."';";
+    $result = pg_query($sql) or die('Query failed:' . pg_last_error());
+}
 
 ##ユーザー名を変更
 if ($posted_user_name == True) {

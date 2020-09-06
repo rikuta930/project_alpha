@@ -52,45 +52,47 @@ if ($posted_gender == True) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile</title>
-  <link rel="stylesheet" href="css/reboot.min.css">
-  <link rel="stylesheet" href="css/profile.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Profile</title>
+    <link rel="stylesheet" href="./css/reboot.min.css"/>
+    <link rel="stylesheet" href="./css/profile.css"/>
 </head>
 <body>
-  <div class="main-container">
+<header class="header">
+    <div class="header__icon">ロゴ</div>
+    <div class="header__title">サービス名</div>
+</header>
+<div class="main-container">
     <h1>プロフィール編集</h1>
-    <img src="image/profile.png" alt="" width="50" height="50">
-    <p>MailAdress:<?php echo $email; ?> </p>
-    <p>ID:<?php echo $user_id;?></p>
-    <div class="form">
-      <form method="POST" action="#">
-      <label>名前
-        <br>
-        <input type="text" name="user_name"></label>
-        <br>
-      <label>
-          <select name="gender">
-              <option value="man">男性</option>
-              <option value="woman">女性</option>
-              <option value="other">その他</option>
-              <option value="noanswer">無回答</option>
-          </select>
-      </label>
-        <br>
-      <label>自己紹介
-        <br>
-        <textarea name="profile"></textarea>
-      </label>
-        <br>
-    <input type="submit" value="変更">
-    </form>
+    <div class="profile">
+        <img src="./icon/girl.png" class="profile__img">
+        <div class="profile__info">
+            <p>MailAdress:<?php echo $email; ?> </p>
+            <p>ID:<?php echo $user_id; ?></p>
+        </div>
     </div>
-    <a href="index.php">←</a>
-  </div>
+    <form method="POST" action="profile.php" class="form">
+        <label for="name">ユーザー名</label>
+        <input class="form__info" 　type="text" name="user_name" id="name"/><br/>
+        <select class="form__info" 　name="gender">
+            <option value="">性別</option>
+            <option value="boy">男性</option>
+            <option value="girl">女性</option>
+            <option value="others">その他</option>
+            <option value="none">無回答</option>
+        </select><br>
+        <label for="introduction">自己紹介</label>
+        <textarea class="form__info" 　name="profile" id="introduction"></textarea><br/>
+        <div class="form__btn-wrapper">
+            <input class="form__btn" type="submit" value="変更">
+        </div>
+    </form>
+    <img src="./icon/arrow.png" class="btn-arrow">
+</div>
 </body>
 </html>

@@ -4,17 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>timeline</title>
+  <link rel="stylesheet" href="css/reboot.min.css">
   <link rel="stylesheet" href="css/timeline.css">
-  <link href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" rel="stylesheet">
 </head>
 <body>
-  <header>
-    ここにヘッダー
+  <header class="header">
+    <div class="header__icon"><img src="icon/logo.png" class="header__icon"></div>
+    <div class="header__title">サービス名</div>
+    <div class="header__search"><img src="icon/search.png" class="header__search" width="20" height="20"></div>
   </header>
   <div class="main-container">
-    <img src="image/blue.png" alt="" width="50" height="50">
     <a href="profile.php">
-      Taro
+      <img src="icon/girl.png" alt="" class="user_img">
+    </a>
+    <a href="profile.php">
+      <h2 style="display:inline;">Taro</h2>
     </a>
     <br>
   <audio controls>
@@ -23,25 +27,27 @@
      <source src="#" type="audio/wav">
      <p>（audio要素に非対応なブラウザ向けの表示）</p>
   </audio>
-    <br>
-    <p id="free-word">
+    <p style="display:inline;" id="free-word">
       #嬉しい #happy
     </p>
 
-  <button>
-    <i class="fas fa-assistive-listening-systems">
-    </i>
-  </button>
-  <p id="count">0</p>
+    <button class="hear" type="button">
+      <img src="icon/ear_black.png" alt="" width="30" height="30">
+    </button>
+    <p style="display:inline;" id="count">15</p>
   </div>
-
-  <footer>
+  <hr>
+  <div class="donut">
+    <a href="#blueLink" class="right">
+    </a> <br>
+    <a href="#RedLink" class="left">
+    </a>
+  </div>
+    <a href="timeline.php">
+      <img src="icon/timeline.png" alt="">
+    </a>
     <a href="form.php">
-      <i class="fas fa-home"></i>
+      <img src="icon/mic.png" alt="" >
     </a>
-    <a href="#">
-      <i class="fas fa-microphone"></i>
-    </a>
-  </footer>
 </body>
 </html>

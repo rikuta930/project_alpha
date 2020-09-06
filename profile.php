@@ -14,16 +14,19 @@ if (isset($_SESSION['password'])) {
     $password = $_SESSION['password'];
 }
 
-if (isset($_POST['user_name']) && strlen($_POST['gender']) > 0) {
+if (isset($_POST['user_name']) && strlen($_POST['user_name']) > 0) {
     $posted_user_name = $_POST['user_name'];
+    echo $posted_user_name;
 }
 
 if (isset($_POST['gender']) && strlen($_POST['gender']) > 0) {
     $posted_gender = $_POST['gender'];
+    echo $posted_gender;
 }
 
 if (isset($_POST['profile']) && strlen($_POST['profile']) > 0) {
     $profile = $_POST['profile'];
+    echo $profile;
 }
 
 $sql_for_user_information = get_sql_select_statement($email);
@@ -36,8 +39,17 @@ if (pg_num_rows($user_information) == 1) {
     $gender = $row[2];
 }
 
-$sql = get_sql_insert_into_user_profile_statement($user_id, $profile);
-$user_information = pg_query($sql) or die('Query faild: ' . pg_last_error());
+##自己紹介がなかったら､追加し､ 自己紹介があったら変更する｡
+    $sql = "SELECT * FROM user_profile WHERE uid = '". $user_id ."';";
+    $result = pg_query($sql) or die('Query faild: ' .pg_last_error());
+
+if (pg_num_rows($result) !== 1){
+    $sql = get_sql_insert_into_user_profile_statement($user_id, $profile);
+    $user_information = pg_query($sql) or die('Query faild: ' . pg_last_error());
+} else {
+    $sql = "UPDATE user_profile SET profile = '". $profile ."' WHERE uid = '". $user_id ."';";
+    $result = pg_query($sql) or die('Query failed:' . pg_last_error());
+}
 
 ##ユーザー名を変更
 if ($posted_user_name == True) {
@@ -70,7 +82,7 @@ if ($posted_gender == True) {
 <div class="main-container">
     <h1>プロフィール編集</h1>
     <div class="profile">
-        <img src="./icon/girl.png" class="profile__img">
+        <img src="./icon/<?php echo "$gender";?>.png" class="profile__img">
         <div class="profile__info">
             <p>MailAdress:<?php echo $email; ?> </p>
             <p>ID:<?php echo $user_id; ?></p>
@@ -78,16 +90,16 @@ if ($posted_gender == True) {
     </div>
     <form method="POST" action="profile.php" class="form">
         <label for="name">ユーザー名</label>
-        <input class="form__info" 　type="text" name="user_name" id="name"/><br/>
-        <select class="form__info" 　name="gender">
+        <input class="form__info" type="text" name="user_name" id="name"/><br/>
+        <select class="form__info" name="gender">
             <option value="">性別</option>
             <option value="boy">男性</option>
             <option value="girl">女性</option>
             <option value="others">その他</option>
-            <option value="none">無回答</option>
+            <option value="secret">無回答</option>
         </select><br>
         <label for="introduction">自己紹介</label>
-        <textarea class="form__info" 　name="profile" id="introduction"></textarea><br/>
+        <textarea class="form__info" name="profile" id="introduction"></textarea><br/>
         <div class="form__btn-wrapper">
             <input class="form__btn" type="submit" value="変更">
         </div>

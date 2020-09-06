@@ -9,7 +9,7 @@
 </head>
 <body>
   <header class="header">
-    <div class="header__icon"><img src="icon/logo.png" class="header__icon"></div>
+    <div class="header__icon"><img src="icon/logo.png" class="header__icon" width="50" height="50"></div>
     <div class="header__title">サービス名</div>
     <div class="header__search"><img src="icon/search.png" class="header__search" width="20" height="20"></div>
   </header>

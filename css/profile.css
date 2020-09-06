@@ -1,0 +1,136 @@
+.header {
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  background-color: #F7F7F7;
+  -webkit-box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.1);
+}
+
+.header__icon {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  color: #3C3C3C;
+}
+
+.header__title {
+  margin: auto;
+  color: #3C3C3C;
+}
+
+.header__search {
+  position: absolute;
+  right: 5px;
+  color: #3C3C3C;
+}
+
+body {
+  position: relative;
+  height: 100vh;
+  background-color: #F7F7F7;
+  color: #3C3C3C;
+}
+
+.main-container {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 70px;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.profile__img {
+  width: 80px;
+  margin-left: 30px;
+}
+
+.profile__info {
+  position: relative;
+}
+
+.profile__info__mail {
+  position: absolute;
+  right: 0;
+  bottom: 13px;
+  margin-bottom: 0;
+  font-size: 12px;
+  color: #898CA8;
+}
+
+.profile__info__id {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  color: #898CA8;
+}
+
+form > label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+form > input, select, textarea {
+  outline: none;
+  border: 1px solid #C7C7C7;
+}
+
+form > input, select {
+  height: 24px;
+}
+
+textarea {
+  height: 80px;
+}
+
+.form__info {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.form__btn-wrapper {
+  text-align: right;
+}
+
+.form__btn {
+  width: 65px;
+  height: 35px;
+  border-radius: 3px;
+  color: white;
+  border: none;
+  background-color: #BE5683;
+}
+
+.btn-arrow {
+  position: absolute;
+  bottom: 15px;
+  width: 50px;
+}
+/*# sourceMappingURL=profile.css.map */

@@ -73,7 +73,7 @@ if ($posted_gender == True) {
 <div class="main-container">
     <h1>プロフィール編集</h1>
     <div class="profile">
-        <img src="./icon/girl.png" class="profile__img">
+        <img src="./icon/<?php echo "$gender";?>.png" class="profile__img">
         <div class="profile__info">
             <p>MailAdress:<?php echo $email; ?> </p>
             <p>ID:<?php echo $user_id; ?></p>
@@ -87,7 +87,7 @@ if ($posted_gender == True) {
             <option value="boy">男性</option>
             <option value="girl">女性</option>
             <option value="others">その他</option>
-            <option value="none">無回答</option>
+            <option value="secret">無回答</option>
         </select><br>
         <label for="introduction">自己紹介</label>
         <textarea class="form__info" name="profile" id="introduction"></textarea><br/>

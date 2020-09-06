@@ -1,7 +1,6 @@
 <?php
 require 'get_dbconn.php';
 require 'get_sql_select_statement.php';
-
 session_start();
 if (isset($_SESSION['email'])) {
     $email = $_SESSION['email'];
@@ -27,6 +26,13 @@ if (isset($email) && isset($password)) {
         if (password_verify($password, $row[4])) {
             $_SESSION['email'] = $email;
             $_SESSION['password'] = $password;
+            $_SESSION['uid'] = $row[0];
+            $_SESSION['user_name'] = $row[1];
+            $_SESSION['gender'] = $row[2];
+
+            ###### 写真
+            $profile_pic = "icon/" . $_SESSION['gender'] . ".png";
+
             $aflag = 1;
         }
     }
@@ -47,7 +53,7 @@ if ($aflag == 0) {
   </head>
   <body>
 <div class="main-container">
-  <img src="icon/girl.png" alt="" width="100" height="100">
+  <img src="<?php echo $profile_pic;?>" alt="" width="100" height="100">
    <div class="follow">
      <p>フォロー</p>
      <p id="follow">5</p>
@@ -56,15 +62,15 @@ if ($aflag == 0) {
      <p>フォロワー</p>
      <p id="follow">5</p>
    </div>
-  <h2>Hana</h2>
-  <p id="id">ID:aaaaaaa</p>
+  <h2><?php echo $_SESSION['user_name']?></h2>
+  <p id="id">ID:<?php echo $_SESSION['uid'];?></p>
   <p id="profile">自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介自己紹介</p>
   <button type="button" name="edit" onclick="profile.php">プロフィール編集</button>
 </div>
 <hr>
 
   <div class="secound-container">
-    <img src="icon/girl.png" alt="" width="50" height="50">
+    <img src="<?php echo $profile_pic;?>" alt="" width="50" height="50">
     <p>Hana</p>
     <br>
   <audio controls>

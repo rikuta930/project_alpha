@@ -17,10 +17,10 @@
       <form method="POST" action="#">
       <label>名前
         <br>
-        <input type="text" name="name"></label>
+        <input type="text" name="user_name"></label>
         <br>
       <label>
-          <select>
+          <select name="gender">
               <option value="man">男性</option>
               <option value="woman">女性</option>
               <option value="other">その他</option>
@@ -30,13 +30,13 @@
         <br>
       <label>自己紹介
         <br>
-        <textarea name="introduction"></textarea>
+        <textarea name="profile"></textarea>
       </label>
         <br>
     <input type="submit" value="変更">
     </form>
     </div>
-    <a href="#">←</a>
+    <a href="index.php">←</a>
   </div>
 </body>
 </html>

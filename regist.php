@@ -16,6 +16,10 @@ if (isset($_POST['email'])) {
 if (isset($_POST['user_name'])) {
     $user_name = $_POST['user_name'];
 }
+### 後で性別を追加する場合の変更点
+//if (isset($_POST['gender'])) {
+//    $gender = $_POST['gender'];
+//}
 if (isset($_POST['password_1'])) {
     $password_1 = $_POST['password_1'];
 }
@@ -23,17 +27,19 @@ if (isset($_POST['password_2'])) {
     $password_2 = $_POST['password_2'];
 }
 
+$gender = 'men';
+
 if ($password_1 !== $password_2) {
     echo "<p>パスワードが一致しませんでした。</p>";
     echo ">戻る</p>";
-} elseif (isset($email) && isset($user_name) && isset($password_1)) {
+} elseif (isset($email) && isset($user_name) && isset($gender) && isset($password_1)) {
     $select_sql_for_register = get_sql_select_statement($email);
     get_dbconn();
     $result = pg_query($select_sql_for_register) or die('Query failed: ' . pg_last_error());
     if (pg_num_rows($result) == 0) {
         $npw = $password_1;
         $npwh = password_hash($npw, PASSWORD_BCRYPT);
-        $insert_sql_for_register = get_sql_insert_statement($user_name, $email, $npwh);
+        $insert_sql_for_register = get_sql_insert_statement($user_name, $gender, $email, $npwh);
         pg_query($insert_sql_for_register) or die('Query failed: ' . pg_last_error());
         echo '<p>ユーザ登録を完了しました</p>';
         $mailfr = "naoki@gms.gdl.jp";

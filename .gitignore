@@ -1,2 +1,12 @@
 .DS_Store
 get_dbconn.php
+
+work/
+sass/
+### Sass ###
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+##

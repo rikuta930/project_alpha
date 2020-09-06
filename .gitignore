@@ -9,4 +9,6 @@ sass/
 *.sass.map
 *.scss.map
 
+.idea
+fff.php
 ##

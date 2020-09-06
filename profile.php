@@ -14,16 +14,19 @@ if (isset($_SESSION['password'])) {
     $password = $_SESSION['password'];
 }
 
-if (isset($_POST['user_name']) && strlen($_POST['gender']) > 0) {
+if (isset($_POST['user_name']) && strlen($_POST['user_name']) > 0) {
     $posted_user_name = $_POST['user_name'];
+    echo $posted_user_name;
 }
 
 if (isset($_POST['gender']) && strlen($_POST['gender']) > 0) {
     $posted_gender = $_POST['gender'];
+    echo $posted_gender;
 }
 
 if (isset($_POST['profile']) && strlen($_POST['profile']) > 0) {
     $profile = $_POST['profile'];
+    echo $profile;
 }
 
 $sql_for_user_information = get_sql_select_statement($email);
@@ -78,8 +81,8 @@ if ($posted_gender == True) {
     </div>
     <form method="POST" action="profile.php" class="form">
         <label for="name">ユーザー名</label>
-        <input class="form__info" 　type="text" name="user_name" id="name"/><br/>
-        <select class="form__info" 　name="gender">
+        <input class="form__info" type="text" name="user_name" id="name"/><br/>
+        <select class="form__info" name="gender">
             <option value="">性別</option>
             <option value="boy">男性</option>
             <option value="girl">女性</option>
@@ -87,7 +90,7 @@ if ($posted_gender == True) {
             <option value="none">無回答</option>
         </select><br>
         <label for="introduction">自己紹介</label>
-        <textarea class="form__info" 　name="profile" id="introduction"></textarea><br/>
+        <textarea class="form__info" name="profile" id="introduction"></textarea><br/>
         <div class="form__btn-wrapper">
             <input class="form__btn" type="submit" value="変更">
         </div>

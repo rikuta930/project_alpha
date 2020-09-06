@@ -55,44 +55,44 @@ if ($posted_gender == True) {
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Profile</title>
-    <link rel="stylesheet" href="./css/reboot.min.css" />
-    <link rel="stylesheet" href="./css/profile.css" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="header__icon">ロゴ</div>
-      <div class="header__title">サービス名</div>
-    </header>
-    <div class="main-container">
-      <h1>プロフィール編集</h1>
-      <div class="profile">
+    <link rel="stylesheet" href="./css/reboot.min.css"/>
+    <link rel="stylesheet" href="./css/profile.css"/>
+</head>
+<body>
+<header class="header">
+    <div class="header__icon">ロゴ</div>
+    <div class="header__title">サービス名</div>
+</header>
+<div class="main-container">
+    <h1>プロフィール編集</h1>
+    <div class="profile">
         <img src="./icon/girl.png" class="profile__img">
         <div class="profile__info">
-          <p class="profile__info__mail">sample@bbbbbb.com</p>
-          <p class="profile__info__id">aaaaaaaa</p>
+            <p>MailAdress:<?php echo $email; ?> </p>
+            <p>ID:<?php echo $user_id; ?></p>
         </div>
-      </div>
-      <form method="POST" action="profile.php" class="form">
+    </div>
+    <form method="POST" action="profile.php" class="form">
         <label for="name">ユーザー名</label>
-        <input class="form__info"　type="text" name="user_name" id="name" /><br />
-        <select class="form__info"　name="gender">
-          <option value="">性別</option>
-          <option value="boy">男性</option>
-          <option value="girl">女性</option>
-          <option value="others">その他</option>
-          <option value="none">無回答</option>
+        <input class="form__info" 　type="text" name="user_name" id="name"/><br/>
+        <select class="form__info" 　name="gender">
+            <option value="">性別</option>
+            <option value="boy">男性</option>
+            <option value="girl">女性</option>
+            <option value="others">その他</option>
+            <option value="none">無回答</option>
         </select><br>
         <label for="introduction">自己紹介</label>
-          <textarea class="form__info"　name="profile" id="introduction"></textarea><br />
+        <textarea class="form__info" 　name="profile" id="introduction"></textarea><br/>
         <div class="form__btn-wrapper">
-          <input class="form__btn" type="submit" value="変更">
+            <input class="form__btn" type="submit" value="変更">
         </div>
-      </form>
-      <img src="./icon/arrow.png" class="btn-arrow">
-    </div>
-  </body>
+    </form>
+    <img src="./icon/arrow.png" class="btn-arrow">
+</div>
+</body>
 </html>

@@ -23,6 +23,10 @@ if (isset($_POST['freeword']) && strlen($_POST['freeword']) > 0) {
     $posted_freeword = $_POST['freeword'];
 }
 
+$sql = "insert into murmur(uid, gender, age, freeword)
+  values('" . $uid . "','" . $posted_gender . "','" . $posted_age . "','" . $posted_freeword . "');";
+$result = pg_query($sql) or die('Query faild: ' .pg_last_error());
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">

@@ -11,6 +11,10 @@ if (isset($_SESSION['uid'])) {
     $uid = $_SESSION['uid'];
 }
 
+if (isset($_SESSION['uid'])) {
+    $uid = $_SESSION['filename'];
+}
+
 if (isset($_POST['gender']) && strlen($_POST['gender']) > 0) {
     $posted_gender = $_POST['gender'];
 }
@@ -27,6 +31,8 @@ $sql = "insert into murmur(uid, gender, age, freeword)
   values('" . $uid . "','" . $posted_gender . "','" . $posted_age . "','" . $posted_freeword . "');";
 $result = pg_query($sql) or die('Query faild: ' .pg_last_error());
 
+$sql = "SELECT * FROM recorded_voice WHERE uid = '". $uid ."';";
+$result = pg_query($sql) or die('Query faild: ' .pg_last_error());
 ?>
 <!DOCTYPE html>
 <html lang="ja">

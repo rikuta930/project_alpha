@@ -36,4 +36,5 @@ create table murmur(
 create table recorded_voice(
 id serial primary key,
 uid text not null,
-file_name text not null) without oids;
+file_name text not null,
+time timestamp not null) without oids;

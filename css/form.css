@@ -19,11 +19,8 @@
 
 .header__icon {
   position: absolute;
-
-  left: 1px;
-  top: 1px;
-  color: #3C3C3C;
-
+  width: 50px;
+  left: 5px;
 }
 
 .header__title {
@@ -50,47 +47,68 @@ body {
   padding-top: 70px;
 }
 
-h1 {
+h2 {
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
-.profile {
+.rec {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-bottom: 40px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 20px;
 }
 
-.profile__img {
-  width: 80px;
-  margin-left: 30px;
+.rec__start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.profile__info {
-  position: relative;
+.rec__start__icon {
+  width: 83px;
+  margin-bottom: 10px;
 }
 
-.profile__info__mail {
-  position: absolute;
-  right: 0;
-  bottom: 13px;
-  margin-bottom: 0;
-  font-size: 12px;
-  color: #898CA8;
+.rec__start__btn {
+  width: 60px;
+  height: 30px;
+  border-radius: 3px;
+  color: white;
+  border: none;
+  background-color: #848CCF;
 }
 
-.profile__info__id {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin-bottom: 0;
-  font-size: 12px;
-  color: #898CA8;
+.rec__stop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.rec__stop__icon {
+  width: 60px;
+  margin-top: 13px;
+  margin-bottom: 10px;
+}
+
+.rec__stop__btn {
+  width: 60px;
+  height: 30px;
+  border-radius: 3px;
+  border: 1px solid #898CA8;
+  color: #848CCF;
+  background-color: white;
 }
 
 form > label {
@@ -99,17 +117,14 @@ form > label {
   margin-bottom: 0;
 }
 
-form > input, select, textarea {
+form > select, textarea {
+  height: 80px;
   outline: none;
   border: 1px solid #C7C7C7;
 }
 
-form > input, select {
+form > select {
   height: 24px;
-}
-
-textarea {
-  height: 80px;
 }
 
 .form__info {
@@ -135,6 +150,4 @@ textarea {
   bottom: 15px;
   width: 50px;
 }
-
-/*# sourceMappingURL=profile.css.map */
-
+/*# sourceMappingURL=form.css.map */

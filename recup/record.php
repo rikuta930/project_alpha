@@ -1,76 +1,35 @@
-<?php
-require 'get_dbconn.php';
-
-$dbconn = get_dbconn();
-
-session_start();
-if (isset($_SESSION['email'])) {
-    $email = $_SESSION['email'];
-}
-if (isset($_SESSION['uid'])) {
-    $uid = $_SESSION['uid'];
-}
-
-if (isset($_SESSION['uid'])) {
-    $uid = $_SESSION['uid'];
-}
-
-if (isset($_POST['gender']) && strlen($_POST['gender']) > 0) {
-    $posted_gender = $_POST['gender'];
-}
-
-if (isset($_POST['age']) && strlen($_POST['age']) > 0) {
-    $posted_age = $_POST['age'];
-}
-
-if (isset($_POST['freeword']) && strlen($_POST['freeword']) > 0) {
-    $posted_freeword = $_POST['freeword'];
-}
-
-$sql = $sql = "SELECT * FROM recorded_voice WHERE uid = '". $_SESSION['uid'] ."';";
-$result = pg_query($sql) or die('Query faild: ' .pg_last_error());
-if (pg_num_rows($result) == 1) {
-    $rows = pg_fetch_row($result);
-    echo $rows[0];
-}
-
-$sql = "insert into murmur(uid, gender, age, freeword)
-  values('" . $uid . "','" . $posted_gender . "','" . $posted_age . "','" . $posted_freeword . "');";
-$result = pg_query($sql) or die('Query faild: ' .pg_last_error());
-
-?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Form</title>
-    <link rel="stylesheet" href="./css/reboot.min.css">
-    <link rel="stylesheet" href="./css/form.css">
+    <link rel="stylesheet" href="../css/reboot.min.css">
+    <link rel="stylesheet" href="../css/form.css">
 </head>
 <body>
 <header class="header">
-    <img src="./icon/logo.png" class="header__icon">
+    <img src="../icon/logo.png" class="header__icon">
     <div class="header__title">サービス名</div>
 </header>
 <div class="main-container">
     <h2>つぶやき</h2>
     <div class="rec">
         <div class="rec__start">
-            <img src="./icon/talking.png" class="rec__start__icon">
-            <!--            <button class="rec__start__btn">録音</button>-->
+            <img src="../icon/talking.png" class="rec__start__icon">
+<!--            <button class="rec__start__btn">録音</button>-->
             <button onclick="startRecording(this);">録音</button>
             <button onclick="stopRecording(this);" disabled>停止</button>
         </div>
         <div class="rec__stop">
-            <img src="./icon/not_talking.png" class="rec__stop__icon">
-            <!--            <button class="rec__stop__btn">停止</button>-->
+            <img src="../icon/not_talking.png" class="rec__stop__icon">
+<!--            <button class="rec__stop__btn">停止</button>-->
         </div>
     </div>
     <ul id="recordingslist"></ul>
     <h2>ハッシュタグ</h2>
-    <form action="" class="form" method="post">
-        <select class="form__info" name="age">
+    <form action="" class="form">
+        <select class="form__info"　name="gender">
             <option value="">年代</option>
             <option value="10">10代</option>
             <option value="20">20代</option>
@@ -82,7 +41,7 @@ $result = pg_query($sql) or die('Query faild: ' .pg_last_error());
             <option value="80">80代</option>
             <option value="90">90代</option>
         </select><br>
-        <select class="form__info" name="gender">
+        <select class="form__info"　name="gender">
             <option value="">性別</option>
             <option value="boy">男性</option>
             <option value="girl">女性</option>
@@ -95,14 +54,13 @@ $result = pg_query($sql) or die('Query faild: ' .pg_last_error());
                 class="form__info"
                 cols="40"
                 rows="8"
-                name="freeword"
                 placeholder="#嬉しい"
-        ></textarea><br/>
+        ></textarea><br />
         <div class="form__btn-wrapper">
             <button class="form__btn">公開</button>
         </div>
     </form>
-    <a href="#"><img src="./icon/arrow.png" class="btn-arrow"></a>
+    <a href="#"><img src="../icon/arrow.png" class="btn-arrow"></a>
 </div>
 
 
@@ -134,7 +92,7 @@ $result = pg_query($sql) or die('Query faild: ' .pg_last_error());
         recorder && recorder.record();
         button.disabled = true;
         button.nextElementSibling.disabled = false;
-        __log('Recording..');
+        __log('Recording...');
     }
 
     function stopRecording(button) {
@@ -166,13 +124,13 @@ $result = pg_query($sql) or die('Query faild: ' .pg_last_error());
             li.appendChild(hf);
             recordingslist.appendChild(li);
 
-            var random = Math.round(Math.random() * 1000000);
+            var random = Math.round( Math.random()*10000 );
             var data = new FormData();
             data.append('fname', random)
             data.append('sound', blob, 'j.wav');
 
             $.ajax({
-                url: "./recup/upload.php",
+                url: "./upload.php",
                 type: 'POST',
                 data: data,
                 contentType: false,
@@ -228,6 +186,6 @@ $result = pg_query($sql) or die('Query faild: ' .pg_last_error());
     };
 </script>
 
-<script src="./recup/js/recorder.js"></script>
+<script src="./js/recorder.js"></script>
 </body>
 </html>

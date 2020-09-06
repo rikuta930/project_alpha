@@ -8,3 +8,7 @@ sass/
 *.css.map
 *.sass.map
 *.scss.map
+
+.idea
+fff.php
+##

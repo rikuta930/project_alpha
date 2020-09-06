@@ -4,30 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign up</title>
-  <link rel="stylesheet" href="css/sign.css">
-</head>
+  <link rel="stylesheet" href="./css/reboot.min.css">
+  <link rel="stylesheet" href="./css/signup.css">
 <body>
+  <header class="header">
+    <div class="header__icon">ロゴ</div>
+    <div class="header__title">サービス名</div>
+  </header>
   <div class="main-container">
     <h1>新規作成</h1>
-    <div class="sign-form">
+    <div class="form">
       <form method="POST" action="regist.php">
-      ユーザ名:
-        <label>
-          <input type="text" name="user_name" size="40">
-        </label><br>
-        email:
-        <label>
-          <input type="text" name="email" size="40">
-        </label><br>
-        password:
-        <label>
-          <input type="password" name="password_1" size="40">
-        </label><br>
-        password:
-        <label>
-          <input type="password" name="password_2" size="40">
-        </label>(確認)<br>
-        <input type="submit" value="登録">
+        <label for="user_name">ユーザ名</label>
+          <input type="text" name="user_name" id="user_name" class="form__info" size="40"><br>
+        <select class="form__info"　name="gender">
+          <option value="">性別</option>
+          <option value="boy">男性</option>
+          <option value="girl">女性</option>
+          <option value="others">その他</option>
+          <option value="none">無回答</option>
+        </select>
+        <label for="mail">メールアドレス</label>
+          <input type="text" name="email" id="mail" class="form__info" size="40"><br>
+        <label for="pw">パスワード</label>
+          <input type="password" name="password_1" id="pw" class="form__info" size="40"><br>
+        <label for="re-pw">パスワード(確認用)</label>
+          <input type="password" name="password_2" id="re-pw" class="form__info" size="40"><br>
+        <div class="form__btn-wrapper">
+          <input class="form__btn" type="submit" value="登録">
+        </div>
       </form>
     </div>
   </div>

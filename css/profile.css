@@ -19,11 +19,9 @@
 
 .header__icon {
   position: absolute;
-
   left: 1px;
   top: 1px;
   color: #3C3C3C;
-
 }
 
 .header__title {
@@ -137,4 +135,3 @@ textarea {
 }
 
 /*# sourceMappingURL=profile.css.map */
-

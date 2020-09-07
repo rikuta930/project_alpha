@@ -73,10 +73,10 @@ if ($posted_gender == True) {
     <link rel="stylesheet" href="./css/profile.css"/>
 </head>
 <body>
-<header class="header">
-    <div class="header__icon">ロゴ</div>
+  <header class="header">
+    <div class="header__icon"><img src="icon/logo.png" class="header__icon" width="50" height="50"></div>
     <div class="header__title">サービス名</div>
-</header>
+  </header>
 <div class="main-container">
     <h1>プロフィール編集</h1>
     <div class="profile">

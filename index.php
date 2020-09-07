@@ -45,10 +45,7 @@ if (isset($email) && isset($password)) {
 
             ######### タイムライン
             $sql = "SELECT * FROM recorded_voice WHERE uid = '". $_SESSION['uid'] ."';";
-            $result = pg_query($sql) or die('Query failed: ' . pg_last_error());
-            if (pg_num_rows($result) == 1) {
-                $row = pg_fetch_row($result);
-            }
+            $result = pg_query($sql) or die('Query faild: ' .pg_last_error());
 
             $aflag = 1;
         }
@@ -92,17 +89,18 @@ if ($aflag == 0) {
   <button type="button" name="edit" onclick="location.href='profile.php'">プロフィール編集</button>
 </div>
 <hr>
-<?php foreach($row as $item):?>
+<?php while ($row = pg_fetch_row($result)): ?>
   <div class="secound-container">
     <img src="<?php echo $profile_pic;?>" alt="" width="50" height="50">
     <p><?php echo $_SESSION['user_name'];?></p>
     <br>
-  <audio controls>
-     <source src="<?php echo $item[2];?>" type="audio/mp3">
-     <source src="#" type="audio/ogg">
-     <source src="#" type="audio/wav">
+      <audio
+              controls
+              src="./recup/data/<?php print($row[2]);?>">
+          Your browser does not support the
+          <code>audio</code> element.
+      </audio>
      <p>（audio要素に非対応なブラウザ向けの表示）</p>
-  </audio>
     <br>
     <p id="free-word">
       #嬉しい #happy
@@ -113,7 +111,7 @@ if ($aflag == 0) {
   </button>
   <p id="count">15</p>
   <hr>
-<?php endforeach;?>
+<?php endwhile; ?>
 
 
   </div>

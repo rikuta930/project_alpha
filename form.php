@@ -105,7 +105,7 @@ if (isset($posted_gender) && isset($posted_age) && isset($posted_freeword)) {
             <button class="form__btn">公開</button>
         </div>
     </form>
-    <a href="#"><img src="./icon/arrow.png" class="btn-arrow"></a>
+    <a href="./index.php"><img src="./icon/arrow.png" class="btn-arrow"></a>
 </div>
 
 

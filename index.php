@@ -44,7 +44,7 @@ if (isset($email) && isset($password)) {
             }
 
             ######### タイムライン
-            $sql = "SELECT * FROM user_profile WHERE uid = '". $_SESSION['uid'] ."';";
+            $sql = "SELECT * FROM recorded_voice WHERE uid = '". $_SESSION['uid'] ."';";
             $result = pg_query($sql) or die('Query failed: ' . pg_last_error());
             if (pg_num_rows($result) == 1) {
                 $row = pg_fetch_row($result);
@@ -70,35 +70,35 @@ if ($aflag == 0) {
     <link rel="stylesheet" href="../css/button.css">
   </head>
   <body>
-        <header class="header">
+<header class="header">
       <img src="../icon/logo.png" class="header__icon" />
       <div class="header__title">VoiStory</div>
       <img src="../icon/search.png" class="header__search">
     </header>
-    <div class="main-container">
-      <div class="profile">
-        <img src="<?php echo $profile_pic;?>" alt="" width="100" height="100">
-        <div class="follow">
-          <p>フォロー</p>
-          <p id="follow">5</p>
-        </div>
-        <div class="follower">
-          <p>フォロワー</p>
-          <p id="follow">5</p>
-        </div>
-        <h2><?php echo $_SESSION['user_name']?></h2>
-        <p id="id">ID:<?php echo $_SESSION['uid'];?></p>
-        <p id="profile"><?php echo $profile;?></p>
-        <button type="button" name="edit" onclick="location.href='profile.php'">プロフィール編集</button>
-      </div>
-    <hr>
-
+<div class="main-container">
+  <div class="profile">
+  <img src="<?php echo $profile_pic;?>" alt="" width="100" height="100">
+   <div class="follow">
+     <p>フォロー</p>
+     <p id="follow">5</p>
+   </div>
+   <div class="follower">
+     <p>フォロワー</p>
+     <p id="follow">5</p>
+   </div>
+  <h2><?php echo $_SESSION['user_name']?></h2>
+  <p id="id">ID:<?php echo $_SESSION['uid'];?></p>
+  <p id="profile"><?php echo $profile;?></p>
+  <button type="button" name="edit" onclick="location.href='profile.php'">プロフィール編集</button>
+</div>
+<hr>
+<?php foreach($row as $item):?>
   <div class="secound-container">
     <img src="<?php echo $profile_pic;?>" alt="" width="50" height="50">
     <p><?php echo $_SESSION['user_name'];?></p>
     <br>
   <audio controls>
-     <source src="#" type="audio/mp3">
+     <source src="<?php echo $item[2];?>" type="audio/mp3">
      <source src="#" type="audio/ogg">
      <source src="#" type="audio/wav">
      <p>（audio要素に非対応なブラウザ向けの表示）</p>
@@ -113,6 +113,7 @@ if ($aflag == 0) {
   </button>
   <p id="count">15</p>
   <hr>
+<?php endforeach;?>
 
 
   </div>

@@ -102,7 +102,7 @@ if ($posted_gender == True) {
             <input class="form__btn" type="submit" value="変更">
         </div>
     </form>
-    <img src="./icon/arrow.png" class="btn-arrow">
+    <a href="index.php"><img src="./icon/arrow.png" class="btn-arrow"></a>
 </div>
 </body>
 </html>

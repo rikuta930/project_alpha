@@ -1,0 +1,39 @@
+.header {
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  background-color: #F7F7F7;
+  -webkit-box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.1);
+}
+
+.header__icon {
+  position: absolute;
+  width: 50px;
+  left: 5px;
+}
+
+.header__title {
+  margin: auto;
+  color: #3C3C3C;
+}
+
+.header__search {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  color: #3C3C3C;
+}
+
+/*# sourceMappingURL=friendpage.css.map */

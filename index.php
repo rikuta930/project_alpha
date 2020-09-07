@@ -60,16 +60,23 @@ if ($aflag == 0) {
 
 ?>
 
-
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mypage</title>
-    <link rel="stylesheet" href="css/reboot.min.css">
-    <link rel="stylesheet" href="css/mypage.css">
+    <link rel="stylesheet" href="../css/reboot.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/button.css">
   </head>
   <body>
+<header class="header">
+      <img src="../icon/logo.png" class="header__icon" />
+      <div class="header__title">VoiStory</div>
+      <img src="../icon/search.png" class="header__search">
+    </header>
 <div class="main-container">
+  <div class="profile">
   <img src="<?php echo $profile_pic;?>" alt="" width="100" height="100">
    <div class="follow">
      <p>フォロー</p>
@@ -102,7 +109,7 @@ if ($aflag == 0) {
     </p>
 ​
   <button>
-    <img src="icon/ear_black.png" alt="" width="50" height="50">
+    <img src="../icon/ear_black.png" alt="" width="50" height="50">
   </button>
   <p id="count">15</p>
   <hr>
@@ -110,11 +117,13 @@ if ($aflag == 0) {
 
 
   </div>
-    <a href="timeline.php">
-      <img src="icon/timeline.png" alt="">
-    </a>
-    <a href="form.php">
-      <img src="icon/mic.png" alt="" >
-    </a>
+  </div>
+
+  <a href="timeline.php" class="btn btn--orange btn--circle btn--circle-a btn--shadow left">
+    <img src="../icon/timeline.png" alt="" width="40" height="40">
+  </a>
+  <a href="form.php" class="btn btn--orange btn--circle btn--circle-a btn--shadow right">
+    <img src="../icon/mic.png" alt="" width="30" height="50">
+  </a>
 </body>
 </html>

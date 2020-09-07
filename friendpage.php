@@ -6,11 +6,12 @@
     <title>Mypage</title>
     <link rel="stylesheet" href="./css/reboot.min.css" />
     <link rel="stylesheet" href="./css/friendpage.css" />
+    <link rel="stylesheet" href="./css/button.css" />
   </head>
   <body>
     <header class="header">
       <img src="./icon/logo.png" class="header__icon" />
-      <div class="header__title">サービス名</div>
+      <div class="header__title">VOISTORIE</div>
       <img src="./icon/search.png" class="header__search">
     </header>
     <div class="main-container">
@@ -39,31 +40,36 @@
           </div>
         </div>
       </div>
+      <hr>
       <div class="list">
-        <img src="icon/girl.png" alt="" width="50" height="50" />
-        <p>Hana</p>
-        <br />
-        <audio controls>
-          <source src="#" type="audio/mp3" />
-          <source src="#" type="audio/ogg" />
-          <source src="#" type="audio/wav" />
-          <p>（audio要素に非対応なブラウザ向けの表示）</p>
-        </audio>
-        <br />
-        <p id="free-word">#嬉しい #happy</p>
-        ​
-        <button>
-          <img src="icon/ear_black.png" alt="" width="50" height="50" />
+        <a href="profile.php">
+          <img src="./icon/girl.png" alt="" class="user_img">
+        </a>
+        <a href="profile.php">
+          <h2 style="display:inline;" id="friendname">Taro</h2>
+        </a>
+
+      <audio controls>
+        <source src="#" type="audio/mp3">
+        <source src="#" type="audio/ogg">
+        <source src="#" type="audio/wav">
+        <p>（audio要素に非対応なブラウザ向けの表示）</p>
+      </audio>
+        <p style="display:inline;" id="free-word">
+          #嬉しい #happy
+        </p>
+
+        <button class="hear" type="button">
+          <img src="./icon/ear_black.png" alt="" width="30" height="30">
         </button>
-        <p id="count">15</p>
+        <p style="display:inline;" id="count">15</p>
+        <hr>
       </div>
-    </div>
-    <a href="timeline.php">
-      <img src="./icon/timeline.png" alt="" />
-    </a>
-    <a href="form.php">
-      <img src="./icon/mic.png" alt="" />
-    </a>
+  <a href="timeline.php" class="btn btn--orange btn--circle btn--circle-a btn--shadow left">
+    <img src="./icon/timeline.png" alt="" width="40" height="40">
+  </a>
+  <a href="form.php" class="btn btn--orange btn--circle btn--circle-a btn--shadow right">
+    <img src="./icon/mic.png" alt="" width="30" height="50">
+  </a>
   </body>
 </html>
-

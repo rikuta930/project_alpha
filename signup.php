@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="./css/signup.css">
 <body>
   <header class="header">
-    <div class="header__icon">ロゴ</div>
-    <div class="header__title">サービス名</div>
+    <div class="header__icon"><img src="icon/logo.png" class="header__icon"></div>
+    <div class="header__title">VOISTORIES</div>
   </header>
   <div class="main-container">
     <h1>新規作成</h1>

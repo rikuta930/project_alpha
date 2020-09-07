@@ -22,12 +22,12 @@
       <h2 style="display:inline;">Taro</h2>
     </a>
     <br>
-  <audio controls>
-     <source src="#" type="audio/mp3">
-     <source src="#" type="audio/ogg">
-     <source src="#" type="audio/wav">
-     <p>（audio要素に非対応なブラウザ向けの表示）</p>
-  </audio>
+      <audio
+              controls
+              src="./recup/data/229406.wav">
+          Your browser does not support the
+          <code>audio</code> element.
+      </audio>
     <p style="display:inline;" id="free-word">
       #嬉しい #happy
     </p>

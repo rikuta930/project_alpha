@@ -25,7 +25,6 @@ create table murmur(
   gender text not null,
   age text not null,
   freeword text not null,
-  filename text not null,
   time timestamp not null) without oids;
 
 create table murmur(
@@ -39,4 +38,5 @@ create table recorded_voice(
 id serial primary key,
 uid int not null,
 file_name text not null,
-time timestamp not null) without oids;
+time timestamp not null,
+murmur_id int) without oids;

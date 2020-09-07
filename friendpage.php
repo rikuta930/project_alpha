@@ -11,7 +11,7 @@
   <body>
     <header class="header">
       <img src="./icon/logo.png" class="header__icon" />
-      <div class="header__title">サービス名</div>
+      <div class="header__title">VOISTORIE</div>
       <img src="./icon/search.png" class="header__search">
     </header>
     <div class="main-container">
@@ -46,9 +46,9 @@
           <img src="./icon/girl.png" alt="" class="user_img">
         </a>
         <a href="profile.php">
-          <h2 style="display:inline;">Taro</h2>
+          <h2 style="display:inline;" id="friendname">Taro</h2>
         </a>
-        <br>
+
       <audio controls>
         <source src="#" type="audio/mp3">
         <source src="#" type="audio/ogg">
@@ -73,4 +73,3 @@
   </a>
   </body>
 </html>
-
